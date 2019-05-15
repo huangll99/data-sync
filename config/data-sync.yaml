@@ -1,0 +1,33 @@
+dbs:
+  - db: cloud1
+    url: jdbc:mysql://10.3.10.131:3306/cloud1?characterEncoding=UTF-8
+    username: root
+    password: xxxxxx
+  - db: cloud2
+    url: jdbc:mysql://10.3.10.131:3306/cloud2?characterEncoding=UTF-8
+    username: root
+    password: xxxxxx
+tasks:
+  - sourceTable: cloud_user
+    sourceTableId: id
+    targets:
+      - db: cloud1
+        targetTable: cloud1_user
+        targetTableId: id
+        columns:
+          - sourceColumn: id
+            targetColumn: id
+          - sourceColumn: username
+            targetColumn: user
+          - sourceColumn: user_desc
+            targetColumn: u_desc
+      - db: cloud2
+        targetTable: cloud2_user
+        targetTableId: id
+        columns:
+          - sourceColumn: id
+            targetColumn: id
+          - sourceColumn: username
+            targetColumn: user
+          - sourceColumn: user_desc
+            targetColumn: u_desc
